@@ -1,5 +1,7 @@
 git clone git@github.com:asergeevjun/ansible.git \
 cd ansible/ \
+sudo add-apt-repository ppa:deadsnakes/ppa \
+sudo apt update -y \
 _PY_VER=3.10 \
 sudo apt install python${_PY_VER} python${_PY_VER}-venv python${_PY_VER}-dev \
 python -mvenv .venv \
