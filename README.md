@@ -5,4 +5,4 @@ sudo apt install python${_PY_VER} python${_PY_VER}-venv python${_PY_VER}-dev \
 python -mvenv .venv \
 source .venv/bin/activate \
 pip install wheel \
-pip install -r requirements.txt \
+pip install -r requirements.txt
