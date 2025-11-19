@@ -1,0 +1,7 @@
+---
+- name: Test sysctl settings
+  hosts: localhost
+  gather_facts: false
+  become: true
+  roles:
+    - sysctl-test

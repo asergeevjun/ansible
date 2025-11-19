@@ -1,0 +1,36 @@
+---
+- name: OS_SETTINGS | Get and show current sysctl values
+  shell: "sysctl -n {{ item.key }}"
+  register: current_values
+  with_items: "{{ keydb_os_settings_config | dict2items }}"
+  ignore_errors: yes
+
+- name: OS_SETTINGS | Show current values
+  debug:
+    msg: "Current: {{ item.item.key }} = {{ item.stdout | default('NOT SET') }}"
+  loop: "{{ current_values.results }}"
+
+- name: OS_SETTINGS | Apply sysctl settings
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+    reload: yes
+  with_items: "{{ keydb_os_settings_config | dict2items }}"
+  register: sysctl_result
+
+- name: OS_SETTINGS | Get and show new sysctl values
+  shell: "sysctl -n {{ item.key }}"
+  register: new_values
+  with_items: "{{ keydb_os_settings_config | dict2items }}"
+  ignore_errors: yes
+
+- name: OS_SETTINGS | Show new values and verify
+  debug:
+    msg: >-
+      {% if item.stdout == item.item.value | string %}
+        OK {{ item.item.key }} = {{ item.stdout }}
+      {% else %}
+        FAILED {{ item.item.key }} = {{ item.stdout }} (expected: {{ item.item.value }})
+      {% endif %}
+  loop: "{{ new_values.results }}"

@@ -1,0 +1,15 @@
+---
+keydb_os_settings_config:
+    net.ipv4.tcp_synack_retries: '1'
+    net.ipv4.tcp_fin_timeout: '10'
+    net.ipv4.tcp_keepalive_intvl: '15'
+    net.ipv4.tcp_keepalive_probes: '5'
+    net.ipv4.tcp_keepalive_time: '60'
+    vm.swappiness: '0'
+    vm.dirty_writeback_centisecs: '500'
+    vm.dirty_expire_centisecs: '1000'
+    vm.dirty_background_ratio: '5'
+    vm.dirty_ratio: '10'
+    vm.vfs_cache_pressure: '1000'
+    kernel.numa_balancing: '1'
+    vm.overcommit_memory: '1'

@@ -1,0 +1,7 @@
+wheel==0.43.0
+ansible==6.7.0
+ansible-core==2.13.7
+ansible-lint==4.2.0
+docutils==0.15.2
+urllib3>=1.26.0
+Jinja2==3.0.3
