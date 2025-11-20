@@ -13,3 +13,8 @@ keydb_os_settings_config:
     vm.vfs_cache_pressure: '1000'
     kernel.numa_balancing: '1'
     vm.overcommit_memory: '1'
+
+keydb_data_paths:
+    data_dir: '/data/keydb'
+    log_dir:  '/var/log/keydb'
+    pid_dir: '/var/run/keydb'
